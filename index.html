@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 GitHub 主页</title>
+    <style>
+        /* 全局样式重置 + 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* 核心容器 */
+        .container {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        /* 标题和提示文字 */
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .tips {
+            color: #666;
+            font-size: 16px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .countdown {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        /* 跳转按钮 */
+        .jump-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .jump-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎访问 loganv 的 github 主页</h1>
+        <p class="tips">
+            即将自动跳转到 ios-uni 项目页面<br>
+            剩余时间：<span class="countdown">5</span> 秒
+        </p>
+        <!-- 手动跳转按钮（替换成你的实际地址） -->
+        <a href="https://你的用户名.github.io/ios-uni" class="jump-btn" id="jumpBtn">
+            立即前往 ios-uni 项目
+        </a>
+    </div>
+
+    <script>
+        // 倒计时自动跳转逻辑
+        let countdown = 10;
+        const countdownEl = document.querySelector('.countdown');
+        const jumpUrl = "https://你的用户名.github.io/ios-uni"; // 替换成你的项目地址
+
+        // 倒计时更新
+        const timer = setInterval(() => {
+            countdown--;
+            countdownEl.textContent = countdown;
+            // 倒计时结束跳转
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = jumpUrl;
+            }
+        }, 1000);
+
+        // 点击按钮跳转（防止重复跳转）
+        document.getElementById('jumpBtn').addEventListener('click', () => {
+            clearInterval(timer);
+            window.location.href = jumpUrl;
+        });
+    </script>
+</body>
+</html>
